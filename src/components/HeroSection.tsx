@@ -1,5 +1,6 @@
 import { ArrowLeft, Github, Linkedin, Twitter } from "lucide-react";
 import { Button } from "./ui/button";
+import profilePhoto from "@/assets/profile-photo.jpeg";
 
 const HeroSection = () => {
   return (
@@ -27,16 +28,37 @@ const HeroSection = () => {
 
       <div className="section-container relative z-10">
         <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
+          {/* Profile Photo */}
+          <div className="relative mb-6 animate-scale-in">
+            <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-primary/30 shadow-glow">
+              <img 
+                src={profilePhoto} 
+                alt="أحمد فيصل أحمد الشيخ - Ahmed Faisal Ahmed Alshaikh" 
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="absolute -inset-2 rounded-full bg-gradient-to-r from-primary/20 to-blue-500/20 blur-xl -z-10" />
+          </div>
+
           {/* Badge */}
-          <div className="glass-card px-4 py-2 rounded-full mb-8 animate-fade-in">
+          <div className="glass-card px-4 py-2 rounded-full mb-6 animate-fade-in">
             <span className="text-primary font-medium text-sm">
               🚀 متاح للمشاريع الجديدة
             </span>
           </div>
 
+          {/* Name */}
+          <div className="mb-4 animate-slide-up">
+            <h2 className="text-2xl md:text-3xl font-bold gradient-text mb-1">
+              أحمد فيصل أحمد الشيخ
+            </h2>
+            <p className="text-lg text-muted-foreground font-mono">
+              Ahmed Faisal Ahmed Alshaikh
+            </p>
+          </div>
+
           {/* Main Heading */}
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6 animate-slide-up">
-            <span className="text-foreground">أنا </span>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 animate-slide-up delay-100">
             <span className="gradient-text">مطور Full Stack</span>
             <br />
             <span className="text-foreground">أبني </span>
