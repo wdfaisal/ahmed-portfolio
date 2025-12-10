@@ -18,8 +18,8 @@ const skillCategories = [
     skills: ["AWS", "Google Cloud", "Docker", "Kubernetes", "CI/CD", "Linux"],
   },
   {
-    title: "الذكاء الاصطناعي",
-    skills: ["OpenAI API", "LangChain", "Machine Learning", "NLP", "ChatGPT", "Claude"],
+    title: "الذكاء الاصطناعي والأتمتة",
+    skills: ["OpenAI API", "LangChain", "n8n", "Machine Learning", "NLP", "ChatGPT", "Claude"],
   },
   {
     title: "أدوات أخرى",

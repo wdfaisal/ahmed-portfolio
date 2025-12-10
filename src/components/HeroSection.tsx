@@ -59,10 +59,10 @@ const HeroSection = () => {
 
           {/* Main Heading */}
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 animate-slide-up delay-100">
-            <span className="gradient-text">مطور Full Stack</span>
+            <span className="gradient-text">مطور برمجيات</span>
             <br />
             <span className="text-foreground">أبني </span>
-            <span className="gradient-text-secondary">حلولاً رقمية متكاملة</span>
+            <span className="gradient-text-secondary">حلولاً رقمية وأتمتة الأعمال</span>
           </h1>
 
           {/* Description */}
