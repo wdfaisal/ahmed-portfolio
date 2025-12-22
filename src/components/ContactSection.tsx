@@ -27,7 +27,7 @@ const ContactSection = () => {
 
   const contactInfo = [
     { icon: Mail, label: "البريد الإلكتروني", value: "a7medalshaki@gmail.com", href: "mailto:a7medalshaki@gmail.com" },
-    { icon: Phone, label: "واتساب", value: "+966 50 000 0000", href: "https://wa.me/9665000000000" },
+    { icon: Phone, label: "واتساب", value: "0908858796", href: "https://wa.me/966908858796" },
     { icon: MapPin, label: "الموقع", value: "الرياض، السعودية", href: "#" },
   ];
 
