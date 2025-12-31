@@ -25,6 +25,19 @@ interface Project {
 
 const staticProjects: Project[] = [
   {
+    id: "8",
+    title: "iPhone 15 Pro Landing Page",
+    title_ar: "صفحة هبوط iPhone 15 Pro",
+    description: "Apple-style landing page with 3D animations",
+    description_ar: "صفحة هبوط احترافية بأسلوب Apple مع رسوم متحركة ثلاثية الأبعاد وتأثيرات بصرية مذهلة لعرض iPhone 15 Pro بتصميم التيتانيوم",
+    image_url: "https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=800",
+    preview_url: "https://iphone15-landing-page-two.vercel.app/",
+    github_url: null,
+    tags: ["React", "Three.js", "GSAP", "Tailwind"],
+    category: "website",
+    featured: true,
+  },
+  {
     id: "7",
     title: "AI PDF Notes",
     title_ar: "ملخصاتي - تطبيق ملاحظات PDF بالذكاء الاصطناعي",
