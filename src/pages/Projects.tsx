@@ -25,6 +25,19 @@ interface Project {
 
 const staticProjects: Project[] = [
   {
+    id: "9",
+    title: "AI Article Summarizer",
+    title_ar: "ملخص المقالات بالذكاء الاصطناعي",
+    description: "OpenAI GPT-4 powered article summarizer",
+    description_ar: "تطبيق مفتوح المصدر لتلخيص المقالات باستخدام OpenAI GPT-4. يحول المقالات الطويلة إلى ملخصات واضحة ومختصرة بسهولة",
+    image_url: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800",
+    preview_url: "https://open-ai-article-summarizer-smoky.vercel.app/",
+    github_url: "https://github.com",
+    tags: ["React", "OpenAI", "GPT-4", "Tailwind"],
+    category: "saas",
+    featured: true,
+  },
+  {
     id: "8",
     title: "iPhone 15 Pro Landing Page",
     title_ar: "صفحة هبوط iPhone 15 Pro",
