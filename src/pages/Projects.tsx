@@ -1,9 +1,14 @@
 import { useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { ExternalLink, Github, ArrowRight, Search, Filter } from "lucide-react";
+import { ExternalLink, Github, ArrowRight, Search, Filter, X } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 interface Project {
   id: string;
   title: string;
@@ -110,7 +115,7 @@ const categories = [
 const Projects = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
-
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const filteredProjects = staticProjects.filter((project) => {
     const matchesCategory = selectedCategory === "all" || project.category === selectedCategory;
     const matchesSearch = project.title_ar.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -186,8 +191,9 @@ const Projects = () => {
               {filteredProjects.map((project, index) => (
                 <div
                   key={project.id}
-                  className="group glass-card-hover rounded-2xl overflow-hidden animate-scale-in"
+                  className="group glass-card-hover rounded-2xl overflow-hidden animate-scale-in cursor-pointer"
                   style={{ animationDelay: `${index * 100}ms` }}
+                  onClick={() => setSelectedProject(project)}
                 >
                   {/* Image */}
                   <div className="relative h-48 overflow-hidden bg-gradient-to-br from-primary/20 to-blue-500/20">
@@ -274,6 +280,94 @@ const Projects = () => {
             العودة للرئيسية
           </a>
         </section>
+
+        {/* Project Modal */}
+        <Dialog open={!!selectedProject} onOpenChange={() => setSelectedProject(null)}>
+          <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+            {selectedProject && (
+              <>
+                <DialogHeader>
+                  <DialogTitle className="text-2xl font-bold gradient-text">
+                    {selectedProject.title_ar}
+                  </DialogTitle>
+                </DialogHeader>
+
+                {/* Project Image */}
+                <div className="relative h-64 rounded-xl overflow-hidden bg-gradient-to-br from-primary/20 to-blue-500/20">
+                  {selectedProject.image_url ? (
+                    <img
+                      src={selectedProject.image_url}
+                      alt={selectedProject.title_ar}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center">
+                      <span className="text-6xl font-bold gradient-text">
+                        {selectedProject.title_ar.charAt(0)}
+                      </span>
+                    </div>
+                  )}
+                  {selectedProject.featured && (
+                    <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-primary/90 text-primary-foreground text-sm font-medium">
+                      مميز
+                    </div>
+                  )}
+                </div>
+
+                {/* Description */}
+                <div className="space-y-4">
+                  <div>
+                    <h4 className="text-sm font-medium text-muted-foreground mb-2">الوصف</h4>
+                    <p className="text-foreground">{selectedProject.description_ar}</p>
+                  </div>
+
+                  {/* Tags */}
+                  <div>
+                    <h4 className="text-sm font-medium text-muted-foreground mb-2">التقنيات المستخدمة</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {selectedProject.tags.map((tag, i) => (
+                        <span
+                          key={i}
+                          className="px-3 py-1.5 rounded-lg bg-secondary text-sm text-foreground font-medium"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Links */}
+                  <div className="flex gap-3 pt-4">
+                    {selectedProject.preview_url && (
+                      <a
+                        href={selectedProject.preview_url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-primary text-primary-foreground font-medium hover:opacity-90 transition-opacity"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <ExternalLink className="w-5 h-5" />
+                        معاينة المشروع
+                      </a>
+                    )}
+                    {selectedProject.github_url && (
+                      <a
+                        href={selectedProject.github_url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-xl glass-card hover:border-primary/40 transition-colors"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <Github className="w-5 h-5" />
+                        كود المصدر
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </>
+            )}
+          </DialogContent>
+        </Dialog>
       </main>
 
       <Footer />
