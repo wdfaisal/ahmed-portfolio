@@ -1,5 +1,6 @@
 import { ExternalLink, Github, Layers } from "lucide-react";
 import { Button } from "./ui/button";
+import { Link } from "react-router-dom";
 
 const projects = [
   {
@@ -128,9 +129,11 @@ const ProjectsSection = () => {
 
         {/* View All Button */}
         <div className="text-center mt-12">
-          <Button variant="hero-outline" size="lg">
-            عرض جميع المشاريع
-          </Button>
+          <Link to="/projects">
+            <Button variant="hero-outline" size="lg">
+              عرض جميع المشاريع
+            </Button>
+          </Link>
         </div>
       </div>
     </section>
