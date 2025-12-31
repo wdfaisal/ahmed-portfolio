@@ -25,6 +25,19 @@ interface Project {
 
 const staticProjects: Project[] = [
   {
+    id: "7",
+    title: "AI PDF Notes",
+    title_ar: "ملخصاتي - تطبيق ملاحظات PDF بالذكاء الاصطناعي",
+    description: "AI-powered PDF note-taking application",
+    description_ar: "تطبيق لتدوين ملاحظات PDF المدعوم بالذكاء الاصطناعي. حمّل ملفات PDF، واطرح أسئلة الذكاء الاصطناعي، أو استخدمه مثل MS-Word. احفظ ملاحظاتك وعزز إنتاجيتك بسهولة!",
+    image_url: "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?w=800",
+    preview_url: "https://ai-pdf-notes-nine.vercel.app/",
+    github_url: null,
+    tags: ["React", "AI", "PDF", "Next.js"],
+    category: "saas",
+    featured: true,
+  },
+  {
     id: "1",
     title: "E-Commerce Platform",
     title_ar: "منصة تجارة إلكترونية",
