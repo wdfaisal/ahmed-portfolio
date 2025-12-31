@@ -1,8 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { ExternalLink, Github, ArrowRight, Search, Filter } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { supabase } from "@/integrations/supabase/client";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -20,6 +18,87 @@ interface Project {
   featured: boolean;
 }
 
+const staticProjects: Project[] = [
+  {
+    id: "1",
+    title: "E-Commerce Platform",
+    title_ar: "منصة تجارة إلكترونية",
+    description: "Full-stack e-commerce solution",
+    description_ar: "منصة متكاملة للتجارة الإلكترونية مع نظام دفع وإدارة المخزون",
+    image_url: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800",
+    preview_url: "https://example.com",
+    github_url: "https://github.com",
+    tags: ["React", "Node.js", "MongoDB", "Stripe"],
+    category: "saas",
+    featured: true,
+  },
+  {
+    id: "2",
+    title: "Business Website",
+    title_ar: "موقع شركة استشارات",
+    description: "Corporate consulting website",
+    description_ar: "موقع احترافي لشركة استشارات مع نظام حجز مواعيد",
+    image_url: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800",
+    preview_url: "https://example.com",
+    github_url: null,
+    tags: ["Next.js", "Tailwind", "Framer Motion"],
+    category: "website",
+    featured: false,
+  },
+  {
+    id: "3",
+    title: "Cloud Management System",
+    title_ar: "نظام إدارة سحابي",
+    description: "Cloud infrastructure management",
+    description_ar: "نظام متكامل لإدارة البنية التحتية السحابية والموارد",
+    image_url: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800",
+    preview_url: "https://example.com",
+    github_url: "https://github.com",
+    tags: ["AWS", "Terraform", "Docker", "Kubernetes"],
+    category: "cloud",
+    featured: true,
+  },
+  {
+    id: "4",
+    title: "Workflow Automation",
+    title_ar: "أتمتة سير العمل",
+    description: "Business process automation",
+    description_ar: "نظام أتمتة العمليات التجارية وتكامل التطبيقات",
+    image_url: "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=800",
+    preview_url: null,
+    github_url: "https://github.com",
+    tags: ["Python", "Zapier", "n8n", "APIs"],
+    category: "automation",
+    featured: false,
+  },
+  {
+    id: "5",
+    title: "SaaS Dashboard",
+    title_ar: "لوحة تحكم SaaS",
+    description: "Analytics dashboard for SaaS",
+    description_ar: "لوحة تحكم متقدمة لتحليل بيانات تطبيقات SaaS",
+    image_url: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800",
+    preview_url: "https://example.com",
+    github_url: "https://github.com",
+    tags: ["React", "D3.js", "PostgreSQL", "GraphQL"],
+    category: "saas",
+    featured: true,
+  },
+  {
+    id: "6",
+    title: "Restaurant Website",
+    title_ar: "موقع مطعم",
+    description: "Modern restaurant website",
+    description_ar: "موقع عصري لمطعم مع نظام حجز طاولات وقائمة تفاعلية",
+    image_url: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800",
+    preview_url: "https://example.com",
+    github_url: null,
+    tags: ["Vue.js", "Tailwind", "Firebase"],
+    category: "website",
+    featured: false,
+  },
+];
+
 const categories = [
   { id: "all", name: "الكل" },
   { id: "saas", name: "SaaS" },
@@ -29,30 +108,10 @@ const categories = [
 ];
 
 const Projects = () => {
-  const [projects, setProjects] = useState<Project[]>([]);
-  const [loading, setLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
 
-  useEffect(() => {
-    fetchProjects();
-  }, []);
-
-  const fetchProjects = async () => {
-    const { data, error } = await supabase
-      .from("projects")
-      .select("*")
-      .order("created_at", { ascending: false });
-
-    if (error) {
-      console.error("Error fetching projects:", error);
-    } else {
-      setProjects(data || []);
-    }
-    setLoading(false);
-  };
-
-  const filteredProjects = projects.filter((project) => {
+  const filteredProjects = staticProjects.filter((project) => {
     const matchesCategory = selectedCategory === "all" || project.category === selectedCategory;
     const matchesSearch = project.title_ar.toLowerCase().includes(searchQuery.toLowerCase()) ||
       project.description_ar.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -114,20 +173,7 @@ const Projects = () => {
 
         {/* Projects Grid */}
         <section className="section-container">
-          {loading ? (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[1, 2, 3, 4, 5, 6].map((i) => (
-                <div key={i} className="glass-card rounded-2xl overflow-hidden animate-pulse">
-                  <div className="h-48 bg-muted" />
-                  <div className="p-6 space-y-4">
-                    <div className="h-6 bg-muted rounded w-3/4" />
-                    <div className="h-4 bg-muted rounded w-full" />
-                    <div className="h-4 bg-muted rounded w-2/3" />
-                  </div>
-                </div>
-              ))}
-            </div>
-          ) : filteredProjects.length === 0 ? (
+          {filteredProjects.length === 0 ? (
             <div className="text-center py-20">
               <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-muted flex items-center justify-center">
                 <Filter className="w-8 h-8 text-muted-foreground" />
