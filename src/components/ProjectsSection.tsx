@@ -4,6 +4,15 @@ import { Link } from "react-router-dom";
 
 const projects = [
   {
+    title: "VirtualR - أدوات تطوير VR",
+    description: "منصة أدوات تطوير تطبيقات الواقع الافتراضي مع واجهة سحب وإفلات ومعاينة في الوقت الفعلي",
+    tags: ["React", "Tailwind", "VR", "WebGL"],
+    category: "Landing Page",
+    image: "https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?w=600&h=400&fit=crop",
+    previewUrl: "https://virtual-landing-page-for-software-platform.vercel.app/",
+    githubUrl: null,
+  },
+  {
     title: "ملخص المقالات بالذكاء الاصطناعي",
     description: "تطبيق مفتوح المصدر لتلخيص المقالات باستخدام OpenAI GPT-4. يحول المقالات الطويلة إلى ملخصات واضحة ومختصرة",
     tags: ["React", "OpenAI", "GPT-4", "Tailwind"],
