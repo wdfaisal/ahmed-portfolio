@@ -4,11 +4,40 @@ import { Link } from "react-router-dom";
 
 const projects = [
   {
+    title: "ملخص المقالات بالذكاء الاصطناعي",
+    description: "تطبيق مفتوح المصدر لتلخيص المقالات باستخدام OpenAI GPT-4. يحول المقالات الطويلة إلى ملخصات واضحة ومختصرة",
+    tags: ["React", "OpenAI", "GPT-4", "Tailwind"],
+    category: "SaaS App",
+    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=400&fit=crop",
+    previewUrl: "https://open-ai-article-summarizer-smoky.vercel.app/",
+    githubUrl: "https://github.com",
+  },
+  {
+    title: "صفحة هبوط iPhone 15 Pro",
+    description: "صفحة هبوط احترافية بأسلوب Apple مع رسوم متحركة ثلاثية الأبعاد وتأثيرات بصرية مذهلة",
+    tags: ["React", "Three.js", "GSAP", "Tailwind"],
+    category: "Landing Page",
+    image: "https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=600&h=400&fit=crop",
+    previewUrl: "https://iphone15-landing-page-two.vercel.app/",
+    githubUrl: null,
+  },
+  {
+    title: "ملخصاتي - تطبيق ملاحظات PDF",
+    description: "تطبيق لتدوين ملاحظات PDF المدعوم بالذكاء الاصطناعي. حمّل ملفات PDF واطرح أسئلة الذكاء الاصطناعي",
+    tags: ["React", "AI", "PDF", "Next.js"],
+    category: "AI App",
+    image: "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?w=600&h=400&fit=crop",
+    previewUrl: "https://ai-pdf-notes-nine.vercel.app/",
+    githubUrl: null,
+  },
+  {
     title: "نظام إدارة الشركات السحابي",
     description: "نظام متكامل لإدارة الموارد البشرية والمحاسبة والمخزون مع لوحة تحكم ذكية",
     tags: ["React", "Node.js", "PostgreSQL", "AWS"],
     category: "Cloud System",
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop",
+    previewUrl: "https://example.com",
+    githubUrl: "https://github.com",
   },
   {
     title: "منصة SaaS للتجارة الإلكترونية",
@@ -16,6 +45,8 @@ const projects = [
     tags: ["Next.js", "Stripe", "MongoDB", "Vercel"],
     category: "SaaS App",
     image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop",
+    previewUrl: "https://example.com",
+    githubUrl: "https://github.com",
   },
   {
     title: "بوت أتمتة خدمة العملاء",
@@ -23,27 +54,8 @@ const projects = [
     tags: ["Python", "OpenAI", "FastAPI", "Redis"],
     category: "AI Automation",
     image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=400&fit=crop",
-  },
-  {
-    title: "موقع شركة استشارات",
-    description: "موقع احترافي لشركة استشارات مع نظام حجز مواعيد ومدونة تقنية",
-    tags: ["React", "Tailwind", "Supabase", "Vercel"],
-    category: "Company Website",
-    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&h=400&fit=crop",
-  },
-  {
-    title: "لوحة تحكم تحليلات البيانات",
-    description: "داشبورد متقدم لعرض وتحليل بيانات المبيعات مع تقارير تفاعلية",
-    tags: ["Vue.js", "D3.js", "Python", "PostgreSQL"],
-    category: "Dashboard",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
-  },
-  {
-    title: "تطبيق إدارة المشاريع",
-    description: "نظام كامل لتتبع المهام والمشاريع مع نظام إشعارات وتقارير أداء",
-    tags: ["React", "Firebase", "TypeScript", "Tailwind"],
-    category: "SaaS App",
-    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&h=400&fit=crop",
+    previewUrl: null,
+    githubUrl: "https://github.com",
   },
 ];
 
@@ -114,13 +126,32 @@ const ProjectsSection = () => {
 
                 {/* Actions */}
                 <div className="flex gap-3">
-                  <Button variant="glass" size="sm" className="flex-1">
-                    <ExternalLink className="w-4 h-4" />
-                    معاينة
-                  </Button>
-                  <Button variant="glass" size="icon" className="shrink-0">
-                    <Github className="w-4 h-4" />
-                  </Button>
+                  {project.previewUrl && (
+                    <a
+                      href={project.previewUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <Button variant="glass" size="sm" className="w-full">
+                        <ExternalLink className="w-4 h-4" />
+                        معاينة
+                      </Button>
+                    </a>
+                  )}
+                  {project.githubUrl && (
+                    <a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <Button variant="glass" size="icon" className="shrink-0">
+                        <Github className="w-4 h-4" />
+                      </Button>
+                    </a>
+                  )}
                 </div>
               </div>
             </div>
