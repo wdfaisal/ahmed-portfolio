@@ -4,6 +4,15 @@ import { Link } from "react-router-dom";
 
 const projects = [
   {
+    title: "ساهل POS - نظام نقاط بيع سحابي",
+    description: "نظام نقاط بيع سحابي متطور مصمم خصيصاً للسودان. منصة متعددة الفروع لإدارة المبيعات والمخزون والموظفين",
+    tags: ["React", "Supabase", "Tailwind", "TypeScript"],
+    category: "SaaS App",
+    image: "/sahel-pos-screenshot.png",
+    previewUrl: "https://sahel-pos.vercel.app",
+    githubUrl: null,
+  },
+  {
     title: "VirtualR - أدوات تطوير VR",
     description: "منصة أدوات تطوير تطبيقات الواقع الافتراضي مع واجهة سحب وإفلات ومعاينة في الوقت الفعلي",
     tags: ["React", "Tailwind", "VR", "WebGL"],
