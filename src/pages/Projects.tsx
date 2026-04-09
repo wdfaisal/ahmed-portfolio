@@ -25,6 +25,19 @@ interface Project {
 
 const staticProjects: Project[] = [
   {
+    id: "10",
+    title: "Sahel POS",
+    title_ar: "ساهل POS - نظام نقاط بيع سحابي",
+    description: "Cloud POS system designed for Sudan",
+    description_ar: "نظام نقاط بيع سحابي متطور مصمم خصيصاً للسودان. منصة متعددة الفروع لإدارة المبيعات، المخزون، والموظفين من أي مكان مع نظام صلاحيات متقدم ولوحة تحكم ذكية",
+    image_url: "/sahel-pos-screenshot.png",
+    preview_url: "https://sahel-pos.vercel.app",
+    github_url: null,
+    tags: ["React", "Supabase", "Tailwind", "TypeScript"],
+    category: "saas",
+    featured: true,
+  },
+  {
     id: "9",
     title: "AI Article Summarizer",
     title_ar: "ملخص المقالات بالذكاء الاصطناعي",
